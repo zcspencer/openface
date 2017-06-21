@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package api;
+
+// The greeting service definition.
+service Api {
+  // Sends a greeting
+  rpc Infer (InferRequest) returns (InferResponse) {}
+  rpc AddFaces (AddFacesRequest) returns (AddFacesResponse) {}
+  rpc Reload (ReloadRequest) returns (ReloadResponse) {}
+}
+
+message ReloadRequest {
+}
+
+message ReloadResponse {
+}
+
+message InferRequest {
+  repeated bytes images = 1;
+  bool isAligned = 2;
+}
+
+message InferResponse {
+  repeated Prediction predictions = 1;
+}
+
+message Prediction {
+	string name = 1;
+	float confidence = 2;
+	int64 x = 3;
+	int64 x1 = 4;
+	int64 y = 5;
+	int64 y1 = 6;
+}
+
+
+message AddFacesRequest {
+	string name = 1;
+  repeated bytes images = 2;
+}
+
+message AddFacesResponse {
+	repeated FoundFace found = 1;
+}
+
+message FoundFace {
+	int32 faceCount = 1;
+	repeated string imageIds = 2;
+}

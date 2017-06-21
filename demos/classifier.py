@@ -50,7 +50,6 @@ modelDir = os.path.join(fileDir, '..', 'models')
 dlibModelDir = os.path.join(modelDir, 'dlib')
 openfaceModelDir = os.path.join(modelDir, 'openface')
 
-
 def getRep(imgPath, multiple=False):
     start = time.time()
     bgrImg = cv2.imread(imgPath)
